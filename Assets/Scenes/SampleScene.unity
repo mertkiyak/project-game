@@ -260,6 +260,37 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &355103896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 355103897}
+  m_Layer: 0
+  m_Name: Orientation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &355103897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355103896}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1289169033}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +421,7 @@ GameObject:
   - component: {fileID: 677167643}
   - component: {fileID: 677167642}
   - component: {fileID: 677167641}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,6 +658,7 @@ GameObject:
   - component: {fileID: 1289169033}
   - component: {fileID: 1289169032}
   - component: {fileID: 1289169034}
+  - component: {fileID: 1289169035}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -658,9 +690,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 2
 --- !u!4 &1289169033
 Transform:
   m_ObjectHideFlags: 0
@@ -673,6 +705,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 355103897}
   - {fileID: 2024669139416486748}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -700,6 +733,28 @@ CapsuleCollider:
   m_Height: 0.85
   m_Direction: 1
   m_Center: {x: -0.015, y: 0.42, z: 0}
+--- !u!114 &1289169035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289169031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e5abdc6d741e84f9edfea5f8a1f91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _orientationTransform: {fileID: 355103897}
+  _movementSpeed: 10
+  _jumpkey: 32
+  _jumpForce: 8
+  _canJump: 1
+  _jumpCooldown: 0.5
+  _playerHeight: 2
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1392210696
 GameObject:
   m_ObjectHideFlags: 0
