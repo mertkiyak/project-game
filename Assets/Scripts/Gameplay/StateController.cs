@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateContoller : MonoBehaviour
+public class StateController : MonoBehaviour
 {
     private PlayerState _currentPlayerState = PlayerState.Idle;
 

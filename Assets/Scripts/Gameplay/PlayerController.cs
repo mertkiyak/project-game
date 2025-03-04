@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public event Action OnPlayerJump;
     [Header("References")]
     [SerializeField] private Transform _orientationTransform;
     
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
 
 
-    private StateContoller _stateContoller;
+    private StateController _stateContoller;
 
     private Rigidbody _playerRigibody;
     
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _stateContoller = GetComponent<StateContoller>(); 
+        _stateContoller = GetComponent<StateController>(); 
         _playerRigibody = GetComponent<Rigidbody>();
     }
     private void Update()
@@ -118,6 +120,7 @@ public class PlayerController : MonoBehaviour
   
     private void SetPlayerJumping()
     {
+        OnPlayerJump?.Invoke();
         //_playerRigibody.linearVelocity = new Vector3(_playerRigibody.linearVelocity.x, 0f, _playerRigibody.linearVelocity.z);
         _playerRigibody.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
 
