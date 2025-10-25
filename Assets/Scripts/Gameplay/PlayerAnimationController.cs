@@ -9,17 +9,22 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] private Animator _playerAnimator;
 
     private PlayerController _playerController;
-    private StateController _stateContoller;
+    private StateController _stateController;
 
     private void Awake()
     {
         _playerController = GetComponent<PlayerController>();
-        _stateContoller = GetComponent<StateController>();
+        _stateController = GetComponent<StateController>();
     }
     private void Start()
     {
         _playerController.OnPlayerJump += PlayerController_OnPlayerJumped;
         Invoke(nameof(ResetJumping),0.5f);
+    }
+
+    private void Update()
+    {
+        SetPlayerAnimations();
     }
 
     private void PlayerController_OnPlayerJumped()
@@ -30,14 +35,12 @@ public class PlayerAnimationController : MonoBehaviour
     private void ResetJumping()
     {
         _playerAnimator.SetBool(Consts.PlayerAnimations.IS_JUMPING, false);
+        Invoke(nameof(ResetJumping), 0.5f);
     }
-    private void Update()
-    {
-        SetPlayerAnimations();
-    }
+    
     private void SetPlayerAnimations()
     {
-        var currentState = _stateContoller.GetCurrentState();
+        var currentState = _stateController.GetCurrentState();
 
         switch (currentState)       
         {
